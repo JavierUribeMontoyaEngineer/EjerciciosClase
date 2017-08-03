@@ -6,7 +6,7 @@ namespace LinqWithMethod2List
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
             Console.WriteLine("--Diferencia usando linq method--");
             List<int> numbers, numbers2;
             CreateLists(out numbers, out numbers2);
