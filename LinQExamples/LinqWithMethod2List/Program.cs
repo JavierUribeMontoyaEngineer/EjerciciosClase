@@ -7,14 +7,14 @@ namespace Linq2List
     {
         static void Main(string[] args)
         { 
-            Console.WriteLine("--Diferencia usando linq method--");
+            Console.WriteLine("--Diferencia de 2 listas usando linq method--");
             List<int> numbers, numbers2;
             CreateLists(out numbers, out numbers2);
             var difference = LinqWithMethod(numbers, numbers2);
-            ShowList(difference);
-            Console.WriteLine("--Diferencia usando linq query--");
+            Console.WriteLine(String.Join(",",difference));
+            Console.WriteLine("--Diferencia de 2 listas usando linq query--");
             difference = LinqWithQuery(numbers, numbers2);
-            ShowList(difference);
+            Console.WriteLine(String.Join(",", difference));
             Console.ReadLine();
         }
 
@@ -45,14 +45,5 @@ namespace Linq2List
                        
             return result;
         }
-
-        private static void ShowList(IEnumerable<int> difference)
-        {
-            foreach (var number in difference)
-            {
-                Console.WriteLine(number);
-            }
-        }
-
     }
 }
