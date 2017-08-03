@@ -12,14 +12,20 @@ namespace LinQExamples
                 1,2,3
             };
             var a = 10;
-            var bigNumbers = numbers.Where(n => n > 1);
-            // Console.WriteLine(bigNumbers);
-
-            foreach (var item in numbers)
+            Console.WriteLine("Caso con funcion Predicate");
+            var bigNumbersPredicate = numbers.Where(n => n > 1);
+            foreach (var number in bigNumbersPredicate)
             {
-                if (item == 2)
-                    break;
+                Console.WriteLine(number);
             }
+            Console.WriteLine("Caso con linq");
+            var bigNumbersLinq = numbers.Where(n => n > 1);
+            foreach (var number in bigNumbersLinq)
+            {
+                Console.WriteLine(number);
+            }
+            Console.ReadLine();
+
         }
 
         static bool Predicate(int value)
