@@ -15,6 +15,7 @@ namespace Linq2List
             Console.WriteLine("--Diferencia de 2 listas usando linq query--");
             difference = LinqWithQuery(numbers, numbers2);
             Console.WriteLine(String.Join(",", difference));
+            
             Console.ReadLine();
         }
 
