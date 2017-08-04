@@ -10,6 +10,23 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            var sql = @"select * from tabla 
+                      where id = @id";
+            var connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog = pepito; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            try
+            {
+                Console.WriteLine("Abrir conexion");
+                connection.Open();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.GetType().Name);
+                Console.ReadLine();
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
