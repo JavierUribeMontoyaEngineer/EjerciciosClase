@@ -32,6 +32,14 @@ namespace PruebasExtra
                    new Customer(){FirstName="Alberto",LastName="King",IdCity=3,Id=3,Packet=packages[1],
                     MonthlyDiscount =20,StartCompanyDate=new DateTime(2006,1,1),State="Spain" }
             };
+            string[] categories = new string[]{
+            "Beverages",
+            "Condiments",
+            "Vegetables",
+            "Dairy Products",
+            "Seafood" };
+
+            var products = GetProducts();
             // var customersQuery = customers.Where(c=>c.LastName=="King");
             /*var customersQuery = from c in customers
                                  where c.LastName == "King"
@@ -43,20 +51,36 @@ namespace PruebasExtra
                                  where c.StartCompanyDate < fechaComparar
                                  select c.FirstName;*/
             //var customersQuery = customers.Where(c => c.Packet.Id == 21 || c.Packet.Id == 28);
-            var customersQuery = from c in customers
-                                 join p in packages
-                                 on c.Packet.Id equals p.Id into grp
-                                 from c_joined in grp.DefaultIfEmpty()                                                            
-                                 select new
-                                 {
-                                     Name = c.FirstName,
-                                     IdPacket = c_joined.Id,
-                                     Speed = c_joined.Speed
-                                 };
+            //var customersQuery = from c in customers
+            //                     join p in packages
+            //                     on c.Packet.Id equals p.Id into grp
+            //                     from c_joined in grp.DefaultIfEmpty()
+            //                     select new
+            //                     {
+            //                         Name = c.FirstName,
+            //                         IdPacket = c_joined.Id,
+            //                         Speed = c_joined.Speed
+            //           };
+            //var customersQuery = from c in categories
+            //                     join p in products on c equals p.Category into ps
+            //                     from p in ps.DefaultIfEmpty(new Product() { Nombre = "No identificado" })                           
+            //                     select new { Category = c, ProductName = p.Nombre };
+            var customersQuery = customers.Where(p => p.LastName == "King");
             Console.WriteLine(String.Join("\n", customersQuery));
             Console.ReadLine();
         }
 
+        private static List<Product> GetProducts()
+        {
+            var products = new List<Product>(){
+                new Product(){Id=1,Nombre="Potatoe",Category="Vegetables"},
+                new Product(){Id=1,Nombre="Fish",Category="Seafood"},
+                new Product(){Id=1,Nombre="Salt",Category="Condiments"},
+                new Product(){Id=1,Nombre="Pepper",Category="Condiments"},
 
+
+            };
+            return products;
+        }
     }
 }
