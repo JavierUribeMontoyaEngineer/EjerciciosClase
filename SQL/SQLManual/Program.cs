@@ -63,10 +63,11 @@ namespace SQLManual
                 }
                 catch (SqlException ex)
                 {
-                    throw new Exception("Error en la conexion o accion");
-                }catch(Exception e)
+                    throw new Exception("Error en la conexion o accion:"+ex.Message);
+                }
+                catch (Exception e)
                 {
-                    throw new Exception("A saber que esta pasando:"+e.Message);
+                    throw new Exception("A saber que esta pasando:" + e.Message);
                 }
             };
         }
